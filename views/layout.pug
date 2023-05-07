@@ -4,34 +4,20 @@ html
         link(rel='stylesheet', href='/stylesheets/style.css')
     body
         block content
-            p= "hardcover fiction:"
-            div
-                ul
-                    for book in results.fic
-                        li= book.isbn
-                ul
-                    for book in results.fic
-                        li= book.title
-                ul
-                    for book in results.fic
-                        li= book.author
-                ul
-                    for book in results.fic
-                        li= book.link
+            for list in results
+                p= "List: " + list.name + ", updated: " + list.updated
+                div
+                    ul
+                        for book in list.books
+                            li= book.isbn
+                    ul
+                        for book in list.books
+                            li= book.title
+                    ul
+                        for book in list.books
+                            li= book.author
+                    ul
+                        for book in list.books
+                            li= book.link
             
-            hr
-
-            p= "hardcover nonfiction:"
-            div
-                ul
-                    for book in results.non
-                        li= book.isbn
-                ul
-                    for book in results.non
-                        li= book.title
-                ul
-                    for book in results.non
-                        li= book.author
-                ul
-                    for book in results.non
-                        li= book.link
+                hr
