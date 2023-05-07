@@ -19,7 +19,7 @@ app.get('/', async (req, res) => {
 
 async function getBooks2() {
 	try {
-		const res = await axios.get(API.URL_FULL_OVERVIEW + "?api-key=" + API.Key);
+		const res = await axios.get(API.URL_FULL_OVERVIEW + "?api-key=" + process.env.NT_API_KEY);
 		return res.data.results.lists.map(list => new List(
 		  	list.list_name,
 			list.updated,
