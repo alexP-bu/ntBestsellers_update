@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
-const API = require('./config/API');
 const Book = require('./config/Book');
 const List = require('./config/List')
 
@@ -19,7 +18,7 @@ app.get('/', async (req, res) => {
 
 async function getBooks2() {
 	try {
-		const res = await axios.get(API.URL_FULL_OVERVIEW + "?api-key=" + process.env.NT_API_KEY);
+		const res = await axios.get("https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=" + process.env.NT_API_KEY);
 		return res.data.results.lists.map(list => new List(
 		  	list.list_name,
 			list.updated,
